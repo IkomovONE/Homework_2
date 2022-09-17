@@ -132,23 +132,16 @@ function addData() {
   var Email = document.getElementById("input-email").value;
   var Address = document.getElementById("input-address").value;
   var Image = document.getElementById("input-image").src;
-  reader = new FileReader();
-  reader.addEventListener("load", function () {
-    NewImage = reader.result;
-  });
   table = document.getElementById("MainTable");
   NewRow = table.insertRow();
   cell1 = NewRow.insertCell(0);
   cell2 = NewRow.insertCell(1);
   cell3 = NewRow.insertCell(2);
   cell4 = NewRow.insertCell(3);
-  cell5 = NewRow.insertCell(4);
   cell1.innerHTML = UserName;
   cell2.innerHTML = Email;
   cell3.innerHTML = Address;
-  cell4.innerHTML = Admin;
-  cell5.inn = NewImage;
-  console.log(NewImage); // I used this page for inserting data into the table
+  cell4.innerHTML = Admin; // I used this page for inserting data into the table
   // https://www.w3schools.com/jsref/met_table_insertrow.asp
 }
 
