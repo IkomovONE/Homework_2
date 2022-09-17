@@ -18,10 +18,18 @@ https://www.w3schools.com/html/html_tables.asp
 -->
 
 
+<!-- 
+  
+  I used this video to help me get the form submit button working properly:
+  
+  https://www.youtube.com/watch?v=TCEgdiN0A8s
+  
+  
+  
+-->
 
 
-
-<form action= "" method= "GET">
+<form action= "" method= "GET" onsubmit="checkData(event)">
       
       
       
@@ -56,14 +64,249 @@ https://www.w3schools.com/html/html_tables.asp
         
         
         
-        <input type="checkbox" id="input-admin" name="AdminUser" value="User is admin">
+        <input type="checkbox" id="input-admin" name="AdminUser" value="X" onchange= "checkedBox()">
         
         <label for="AdminUser">  User is admin </label>
         
         <p> </p>
         
+        <p> </p>
         
-        <input id= "submit-data" type= "submit" value= "Add User">
+        <input type= "file" id = "input-image" name= "Image">
+        
+        <p> </p>
+        
+        
+        
+        <script>
+          
+          var Admin= "-";
+          
+        function checkedBox() {
+          
+          
+          
+          if (Admin=="X"){
+            
+            Admin= "-";
+            
+          }
+          
+          else {
+            
+            Admin= document.getElementById("input-admin").value;
+            
+          }
+          
+        
+        
+          
+        }
+        
+        var index= 0;
+        
+        function checkData(e) {
+          e.preventDefault();
+          
+          
+          var data= "False";
+          
+          var UserName= document.getElementById("input-username").value;
+          
+          table= document.getElementById("MainTable");
+          
+          
+          
+          
+          
+          for (let i= 1; i< table.getElementsByTagName("tr").length; i++) {
+            
+            name= table.getElementsByTagName("tr")[i].getElementsByTagName("td")[0].innerHTML;
+            
+            
+            if (name==UserName) {
+              
+              data= "True";
+              
+              index= i;
+              
+              
+              break
+              
+              
+              
+              }
+              
+            else {
+              
+              
+              
+              
+              
+              continue
+              
+            }              
+            
+            
+            
+          }
+          
+          
+          if (data== "False") {
+            
+            addData();
+            
+            
+          }
+          
+          else {
+            
+            editData();
+            
+            data= "False";
+            
+          }
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        }
+        
+        function editData() {
+          
+          var UserName= document.getElementById("input-username").value;
+          var Email= document.getElementById("input-email").value;
+          var Address= document.getElementById("input-address").value;
+          
+          
+          table= document.getElementById("MainTable");
+          
+          table.getElementsByTagName("tr")[index].getElementsByTagName("td")[1].innerHTML=Email;
+          table.getElementsByTagName("tr")[index].getElementsByTagName("td")[2].innerHTML=Address; 
+          table.getElementsByTagName("tr")[index].getElementsByTagName("td")[3].innerHTML=Admin;
+          
+          
+          
+          
+          
+          
+        }
+        
+        
+        function addData() {
+          
+          
+          
+    var NewImage= "";
+          
+         
+    
+    
+    var UserName= document.getElementById("input-username").value;
+    var Email= document.getElementById("input-email").value;
+    var Address= document.getElementById("input-address").value;
+    
+    var Image= document.getElementById("input-image").src;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+    
+    
+    table= document.getElementById("MainTable");
+    
+    
+ 
+    
+    NewRow= table.insertRow();
+    
+    
+    cell1= NewRow.insertCell(0);
+    
+    cell2= NewRow.insertCell(1);
+    
+    cell3= NewRow.insertCell(2);
+    
+    cell4= NewRow.insertCell(3);
+    
+  
+    
+    
+    cell1.innerHTML= UserName;
+    
+    cell2.innerHTML= Email;
+    
+     
+    cell3.innerHTML= Address;
+    
+    cell4.innerHTML= Admin;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // I used this page for inserting data into the table
+   // https://www.w3schools.com/jsref/met_table_insertrow.asp
+   
+    
+}
+
+
+
+
+function emptyTable() {
+  
+  
+  while (document.getElementById("MainTable").getElementsByTagName("tr")[1]!== "") {
+    
+    document.getElementById("MainTable").deleteRow(1);
+    
+  }
+  
+  
+  
+  
+}
+
+
+
+
+
+</script>
+        
+        
+        <input id= "submit-data" type= "submit" value= "Add User" >
+        
+        <input type= "button" id= "empty-table" value= "Empty table" onclick= "emptyTable()">
         
         
   
@@ -78,7 +321,7 @@ https://www.w3schools.com/html/html_tables.asp
 
 <p> </p>
 
-    <table style="width:60%">
+    <table id = "MainTable" style="width:60%" >
       <tr>
         <th>UserName</th>
 
@@ -87,6 +330,9 @@ https://www.w3schools.com/html/html_tables.asp
         <th>Address</th>
 
         <th>Admin</th>
+        
+        <th>Image</th>
+        
       </tr>
       
       <tr>
@@ -97,6 +343,8 @@ https://www.w3schools.com/html/html_tables.asp
         <td> Metsäpellontie 42 </td>
         
         <td> X </td>
+        
+        <td>  </td>
         
       </tr>
         
@@ -109,6 +357,8 @@ https://www.w3schools.com/html/html_tables.asp
         
         <td> - </td>
         
+        <td>  </td>
+        
       </tr>
       
       
@@ -120,6 +370,8 @@ https://www.w3schools.com/html/html_tables.asp
         <td> Myllymäenkatu 13 </td>
         
         <td> - </td>
+        
+        <td>  </td>
         
       </tr>
         
