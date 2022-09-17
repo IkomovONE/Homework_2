@@ -288,7 +288,20 @@ function emptyTable() {
   
   while (document.getElementById("MainTable").getElementsByTagName("tr")[1]!== "") {
     
-    document.getElementById("MainTable").deleteRow(1);
+    
+    try {
+      
+      document.getElementById("MainTable").deleteRow(1);
+      
+    }
+    
+    catch (err) {
+      
+      break
+      
+    }
+    
+    
     
   }
   
