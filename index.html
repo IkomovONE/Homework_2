@@ -70,6 +70,12 @@ https://www.w3schools.com/html/html_tables.asp
         
         <p> </p>
         
+        <p> </p>
+        
+        <input type= "file" id = "input-image" name= "Image">
+        
+        <p> </p>
+        
         
         
         <script>
@@ -133,7 +139,7 @@ https://www.w3schools.com/html/html_tables.asp
               
             else {
               
-              console.log(name, UserName);
+              
               
               
               
@@ -195,12 +201,37 @@ https://www.w3schools.com/html/html_tables.asp
         
         function addData() {
           
+          
+          
+    var NewImage= "";
+          
          
     
     
     var UserName= document.getElementById("input-username").value;
     var Email= document.getElementById("input-email").value;
     var Address= document.getElementById("input-address").value;
+    
+    var Image= document.getElementById("input-image").src;
+    
+    
+    reader= new FileReader();
+    
+    reader.addEventListener("load", () => {
+      
+      NewImage= reader.result;
+      
+      
+      
+    })
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -224,15 +255,24 @@ https://www.w3schools.com/html/html_tables.asp
     
     cell4= NewRow.insertCell(3);
     
+    cell5= NewRow.insertCell(4);
+    
     
     cell1.innerHTML= UserName;
     
     cell2.innerHTML= Email;
     
-    
+     
     cell3.innerHTML= Address;
     
     cell4.innerHTML= Admin;
+    
+    
+    
+    cell5.inn= NewImage;
+    
+    
+    console.log(NewImage)
     
     
     
@@ -293,6 +333,9 @@ function emptyTable() {
         <th>Address</th>
 
         <th>Admin</th>
+        
+        <th>Image</th>
+        
       </tr>
       
       <tr>
@@ -303,6 +346,8 @@ function emptyTable() {
         <td> Metsäpellontie 42 </td>
         
         <td> X </td>
+        
+        <td>  </td>
         
       </tr>
         
@@ -315,6 +360,8 @@ function emptyTable() {
         
         <td> - </td>
         
+        <td>  </td>
+        
       </tr>
       
       
@@ -326,6 +373,8 @@ function emptyTable() {
         <td> Myllymäenkatu 13 </td>
         
         <td> - </td>
+        
+        <td>  </td>
         
       </tr>
         
